@@ -1,0 +1,30 @@
+CREATE TABLE `driver` (\
+	`name` VARCHAR(50) NOT NULL DEFAULT '' COLLATE 'latin1_swedish_ci',\
+	`country` VARCHAR(50) NOT NULL DEFAULT '' COLLATE 'latin1_swedish_ci',\
+	`points` INT(11) NOT NULL DEFAULT '0',\
+	`date_of_birth` VARCHAR(50) NOT NULL DEFAULT '0000-00-00' COLLATE 'latin1_swedish_ci',\
+	`world_championship` INT(11) NOT NULL DEFAULT '0',\
+	`id_team` INT(11) NOT NULL DEFAULT '0',\
+	`url_image` VARCHAR(150) NOT NULL COLLATE 'latin1_swedish_ci',\
+	`id_driver` INT(11) NOT NULL,\
+	PRIMARY KEY (`id_driver`) USING BTREE,\
+	INDEX `idTeam` (`id_team`) USING BTREE,\
+	CONSTRAINT `driver_ibfk_1` FOREIGN KEY (`id_team`) REFERENCES `arquif1`.`team` (`id`) ON UPDATE RESTRICT ON DELETE RESTRICT\
+)\
+COLLATE='latin1_swedish_ci'\
+ENGINE=InnoDB\
+;\
+\
+CREATE TABLE `team` (\
+	`id` INT(11) NOT NULL,\
+	`name` VARCHAR(50) NOT NULL DEFAULT '' COLLATE 'latin1_swedish_ci',\
+	`url_image` VARCHAR(100) NOT NULL COLLATE 'latin1_swedish_ci',\
+	`team_chief` VARCHAR(50) NOT NULL COLLATE 'latin1_swedish_ci',\
+	`technical_chief` VARCHAR(50) NOT NULL COLLATE 'latin1_swedish_ci',\
+	`points` INT(11) NOT NULL,\
+	`base` VARCHAR(50) NOT NULL DEFAULT '' COLLATE 'latin1_swedish_ci',\
+	PRIMARY KEY (`id`) USING BTREE\
+)\
+COLLATE='latin1_swedish_ci'\
+ENGINE=InnoDB\
+;}
